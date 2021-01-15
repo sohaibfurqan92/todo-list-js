@@ -50,8 +50,17 @@ if(e.target.parentElement.classList.contains('delete-item')){
 }
 
 function filterTasks(e){
-  //get the input
-  const text = filterInput.value;
-  console.log(text);
+  // Get text being typed
+  const text = filterInput.value.toLowerCase();
+
+  //loop through list items
+  document.querySelectorAll('.collection-item').forEach(function(item){
+    const task = item.firstChild.textContent.toLowerCase();
+    if(task.indexOf(text)!=-1){
+      item.style.display='block';
+    } else{
+      item.style.display='none';
+    }
+  });
 }
 
